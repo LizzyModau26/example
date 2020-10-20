@@ -1,0 +1,121 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Blank
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<!-- <ion-content > -->
+  <!-- <form [formGroup]="OurItemForm" (ngSubmit)="create_Items()"> -->
+  
+
+<!-- <ion-item> -->
+<!-- <ion-label>Enter Item Name</ion-label> -->
+  <!-- <ion-input postion="floating" formControlName="name"></ion-input> -->
+    <!-- </ion-item> -->
+<!-- <ion-item> -->
+<!-- <ion-label>Quantity</ion-label> -->
+  <!-- <ion-input postion="floating" formControlName="quantity"></ion-input> -->
+    <!-- </ion-item> -->
+<!-- <ion-item> -->
+<!-- <ion-label>Item Picture</ion-label> -->
+  <!-- <ion-input formControlName="picture"  postion="floating"></ion-input> -->
+<!-- </ion-item> -->
+<!-- <ion-item> -->
+<!-- <ion-button>(click)="create_Items()" [disabled]="OurItemForm"></ion-button> -->
+<!-- </ion-item> -->
+
+
+
+
+<!-- </form> -->
+
+<!-- </ion-content> -->
+
+
+<ion-content [fullscreen]="true" class="ion-padding">
+
+  <form [formGroup]="OurItemForm" (ngSubmit)="CreateItem()">
+
+    <ion-item>
+      <ion-label position="floating">Name</ion-label>
+      <ion-input formControlName="name"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Quantity</ion-label>
+      <ion-input formControlName="quantity"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Picture</ion-label>
+      <ion-input formControlName="picture"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-button (click)="CreateItem()" [disabled]="OurItemForm.invalid">
+        <ion-icon size="small" slot="icon-only" name="add"></ion-icon>
+        &nbsp;Create Record
+      </ion-button>
+    </ion-item>
+
+  </form>
+
+
+  <ion-card *ngFor="let item of shopList" color="primary">
+    <span *ngIf="!item.isEdit; else elseBlock">
+      <ion-card-header>
+        <ion-card-title>{{item.quantity}} {{item.name}} </ion-card-title>
+        <ion-card-subtitle> {{item.picture}}</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+
+        <ion-button shape="round" color="secondary" size="small" (click)="EditItem(item)">
+          <ion-icon size="small" slot="icon-only" name="create"></ion-icon>
+
+        </ion-button>
+        <ion-button shape="round" color="danger" size="small" (click)="RemoveItem(item.id)">
+          <ion-icon size="small" slot="icon-only" name="trash"></ion-icon>
+
+        </ion-button>
+      </ion-card-content>
+    </span>
+    <ng-template #elseBlock>
+      <ion-card-header>
+        <ion-card-title>
+          <ion-grid>
+            <ion-row>
+              <ion-col>
+                Edit
+              </ion-col>
+              <ion-col>
+                <ion-button fill="solid" color="medium" size="small" (click)="item.isEdit = false">
+                  Cancel
+                </ion-button>
+              </ion-col>
+              <ion-col>
+                <ion-button fill="solid" color="success" size="small" (click)="UpdateItem(item)">
+                  Update
+                </ion-button>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item>
+          <ion-label><strong>Name</strong></ion-label>
+          <ion-input type="text" [(ngModel)]="item.Editname"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label><strong>Age</strong></ion-label>
+          <ion-input type="text" [(ngModel)]="item.Editquantity"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label><strong>Address</strong></ion-label>
+          <ion-input type="text" [(ngModel)]="item.Editpicture"></ion-input>
+        </ion-item>
+      </ion-card-content>
+    </ng-template>
+  </ion-card>
