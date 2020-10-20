@@ -4,11 +4,11 @@ import { AngularFirestore } from '@angular/fire/firestore';
   providedIn: 'root'
 })
 export class FirebaseService {
-  collectionName = 'Items';
+  collectionName = 'Itemss';
   constructor(private firestore: AngularFirestore) { }
 
-create_Items(item){
-  return this.firestore.collection(this.collectionName).add(item)
+create_Items(items){
+  return this.firestore.collection(this.collectionName).add(items)
 }
 
 
@@ -16,12 +16,12 @@ read_Items(){
   return this.firestore.collection(this.collectionName).snapshotChanges()
 }
 
-update_Items(itemID, item){
-   this.firestore.doc( this.collectionName + '/' + itemID).update(item)
+update_Items(itemsID, items){
+   this.firestore.doc( this.collectionName + '/' + itemsID).update(items)
 }
 
-delete_Items(item_id){
-   this.firestore.doc(this.collectionName + '/' + item_id).delete();
+delete_Items(items_id){
+   this.firestore.doc(this.collectionName + '/' + items_id).delete();
 }
 
 }

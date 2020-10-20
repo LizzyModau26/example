@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FirebaseService } from '../services/firebase.service';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
-import { createWriteStream } from 'fs';
+
 
 interface ShopData{
   
@@ -56,26 +56,26 @@ CreateItem() {
     });
 }
 
-RemoveItem(itemID) {
-  this.firebaseService.delete_Items(itemID)
+RemoveItem(itemsID) {
+  this.firebaseService.delete_Items(itemsID)
 
 }
 
-EditItem(item) {
-  item.isEdit = true;
-  item.Editname = item.name;
-  item.Editquantity = item.quantity;
-  item.Editpicture = item.picture;
+EditItem(items) {
+  items.isEdit = true;
+  items.Editname = items.name;
+  items.Editquantity = items.quantity;
+  items.Editpicture = items.picture;
 
 }
 
-UpdateItem(itemRow) {
-  let item = {};
-  item['name'] = itemRow.Editname;
-  item['quantity'] = itemRow.Editquantity;
-  item['picture'] = itemRow.Editpicture;
-  this.firebaseService.update_Items(itemRow.id, item)
-  itemRow.isEdit = false;
+UpdateItem(itemsRow) {
+  let items = {};
+  items['name'] = itemsRow.Editname;
+  items['quantity'] = itemsRow.Editquantity;
+  items['picture'] = itemsRow.Editpicture;
+  this.firebaseService.update_Items(itemsRow.id, items)
+  itemsRow.isEdit = false;
 }
 
 }
