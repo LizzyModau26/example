@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Create Your Item</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div id="container">
+  <div id="mid-holder">
+    <form [formGroup]="OurItemForm" (ngSubmit)="CreateItem()">
+  
+      <ion-item>
+        <ion-label position="floating">Name</ion-label>
+        <ion-input formControlName="name"></ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label position="floating">Quantity</ion-label>
+        <ion-input formControlName="quantity"></ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label position="floating">Picture</ion-label>
+        <ion-input type="file" id="input" accept="image/*" formControlName="picture" (change)="addPic($event)" ></ion-input>
+      </ion-item>
+      
+        <ion-button (click)="CreateItem()"  >
+          <ion-icon size="small" slot="icon-only" name="add" ></ion-icon>
+          &nbsp;Create Item
+        </ion-button>
+        <ion-button routerLink="/home">
+          <ion-icon size="small" slot="icon-only" name="add" ></ion-icon>
+          View Items
+        </ion-button>
+        
+      
+        
+    </form>
+    </div>
+  </div>
+</ion-content>

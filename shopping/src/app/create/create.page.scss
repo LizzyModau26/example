@@ -1,0 +1,26 @@
+#container{
+
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    
+
+}
+
+#mid-holder{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 80%;
+    height: 80%;
+    color: orangered;
+}
+
+ion-fab-button{
+
+    display:flex;
+
+    justify-self: flex-end;
+  
+}

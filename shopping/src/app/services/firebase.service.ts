@@ -8,16 +8,16 @@ export class FirebaseService {
   constructor(private firestore: AngularFirestore) { }
 
 create_Items(items){
-  return this.firestore.collection(this.collectionName).add(items)
+  return this.firestore.collection(this.collectionName).add(items);
 }
 
 
 read_Items(){
-  return this.firestore.collection(this.collectionName).snapshotChanges()
+  return this.firestore.collection(this.collectionName).snapshotChanges();
 }
 
 update_Items(itemsID, items){
-   this.firestore.doc( this.collectionName + '/' + itemsID).update(items)
+   this.firestore.doc( this.collectionName + '/' + itemsID).update(items);
 }
 
 delete_Items(items_id){
